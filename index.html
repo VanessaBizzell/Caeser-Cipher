@@ -10,7 +10,7 @@
 <body>
     <form name="caeserForm" id="ceaserForm">
         <label for="userMessage">Enter Message:</label><br />
-        <textarea id="userMessage" rows="4" cols="50" oninput="enDeCode()">
+        <textarea id="userMessage" class="bg-red-500 border-2" rows="4" cols="50" oninput="enDeCode()">
         </textarea>
         <br/> <br/>
         <label for="encode">Encode:</label>
@@ -21,8 +21,11 @@
         <label for="userKey">Key:</label>
         <input type="number" min="0" max="26" id="userKey" value="1" onchange="enDeCode()" />
         <br/> <br/>
+        <label for="userKey">Shift:</label>
+        <input type="number" min="0" max="26" id="userKey" value="1" onchange="enDeCode()" />
+        <br/> <br/>
         <label for="output">Output:</label><br />
-        <textarea id="output" rows="4" cols="50">
+        <textarea id="output" class="bg-blue-500 border-2" rows="4" cols="50">
         </textarea>
   
       </form>
