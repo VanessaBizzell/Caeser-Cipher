@@ -8,101 +8,124 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <form name="caeserForm" id="ceaserForm" class=" flex justify-center items-center bg-green-50 md:py-4">
-      <section
-        id="background"
-        class="h-screen max-w-2xl bg-gradient-to-tl from-teal-300 to-cyan-600 p-6 md:rounded-2xl shadow-2xl"
-      >
-        <header
-          class="font-sans text-4xl font-semibold text-green-100 tracking-wide pb-5 uppercase text-center"
+    <div
+      id="background"
+      class="bg-green-50 md:py-4 flex justify-center items-center"
+    >
+      <form name="caeserForm" id="ceaserForm">
+        <section
+          id="gradient background"
+          class="h-full max-w-2xl bg-gradient-to-tl from-teal-300 to-cyan-600 pt-6 px-6 pb-12 md:rounded-2xl md:shadow-2xl"
         >
-          Caeser's Cipher
-        </header>
-        <h2 class="text-1xl font-normal text-green-50 pb-5 max-w-prose">
-          Julius Caeser used this code to pass secret battle messages when he
-          was a Roman general. Have a go at encrypting your secret messages and
-          de-encrypt messages from friends.
-        </h2>
-        <div id="messageArea" class="grid grid cols items center">
-          <label for="userMessage" class="text-lg pb-2 text-teal-900"
-            >Enter Message:</label
+          <header
+            class="font-sans text-4xl font-semibold text-green-100 tracking-wide pb-5 uppercase text-center"
           >
-          <textarea
-            id="userMessage"
-            class="bg-teal-50 border-2 rounded-xl border-gray-500 shadow-xl max-w-2xl pl-3 pt-2"
-            oninput="enDeCrypt()"
-          >
-          </textarea>
-          <label for="output" class="text-lg py-2 text-teal-900">Output:</label>
-          <textarea
-            id="output"
-            class="bg-teal-50 pl-3 pt-2 border-2 rounded-xl border-gray-500 shadow-xl max-w-2xl"
-            disabled
-          >
-          </textarea>
-        </div>
-        <div id="radio area" class="flex items-center pt-4">
+            Caeser's Cipher
+          </header>
+          <h2 class="text-1xl font-normal text-green-50 pb-5 max-w-prose">
+            Julius Caeser used this code to pass secret battle messages when he
+            was a Roman general. Have a go at encrypting your secret messages
+            and de-encrypting messages from friends.
+          </h2>
+          <div id="messageArea" class="grid grid cols items center">
+            <label for="userMessage" class="text-lg pb-2 text-teal-900"
+              >Enter Message:</label
+            >
+            <textarea
+              id="userMessage"
+              class="bg-teal-50 border-2 rounded-xl border-gray-500 shadow-xl max-w-2xl pl-3 pt-2"
+              oninput="enDeCrypt()"
+            >
+            </textarea>
+            <label
+              for="output"
+              id="encrypted"
+              class="text-lg py-2 text-teal-900"
+              >Encrypted Message:</label
+            >
+            <textarea
+              id="output"
+              class="bg-teal-50 pl-3 pt-2 border-2 rounded-xl border-gray-500 shadow-xl max-w-2xl"
+              disabled
+            >
+            </textarea>
+          </div>
+          <div id="radio area" class="flex items-center pt-4">
+            <label
+              for="encrypt"
+              class="text-lg text-green-100 font-semibold pr-2.5"
+              >Encryption:</label
+            >
+            <input
+              type="radio"
+              name="code"
+              id="encrypt"
+              class="accent-teal-800 h-5 w-5"
+              checked
+              onchange="enDeCrypt()"
+            />
+          </div>
+          <div id="radio area" class="flex items-center pb-6 pt-2">
+            <label
+              for="decrypt"
+              class="text-lg text-green-100 font-semibold pr-2"
+              >Decryption:</label
+            >
+            <input
+              type="radio"
+              name="code"
+              id="decrypt"
+              class="accent-teal-800 h-5 w-5"
+              onchange="enDeCrypt()"
+            />
+          </div>
           <label
-            for="encrypt"
-            class="text-lg text-green-100 font-semibold pr-2.5"
-            >Encryption:</label
+            for="userKey"
+            class="text-lg text-teal-800 font-bold pt-3 pb-2 pr-4"
+            >Key:</label
           >
           <input
-            type="radio"
-            name="code"
-            id="encrypt"
-            class="accent-teal-800 h-5 w-5"
-            checked
+            type="number"
+            class="pl-2 text-teal-600 rounded-md"
+            min="0"
+            max="26"
+            id="userKey"
+            value="1"
             onchange="enDeCrypt()"
           />
-        </div>
-        <div id="radio area" class="flex items-center pb-6 pt-2">
-          <label for="decrypt" class="text-lg text-green-100 font-semibold pr-2"
-            >Decryption:</label
+          <p
+            id="explain"
+            class="text-normal text-teal-900 pt-2 pb-3 max-w-prose"
+          >
+            This will set the cipher key...the number picked moves the letter on
+            by that number of spaces in the alphabet eg. 3 would encrypt A to C.
+          </p>
+          <label
+            for="userShift"
+            class="text-lg text-teal-800 font-bold pt-4 pb-2 pr-2"
+            >Shift:</label
           >
           <input
-            type="radio"
-            name="code"
-            id="decrypt"
-            class="accent-teal-800 h-5 w-5"
+            type="number"
+            class="pl-2 text-teal-600 rounded-md"
+            min="0"
+            max="26"
+            id="userShift"
+            value="1"
             onchange="enDeCrypt()"
           />
-        </div>
-        <label
-          for="userKey"
-          class="text-lg text-teal-800 font-bold pt-3 pb-2 pr-4"
-          >Key:</label
-        >
-        <input
-          type="number"
-          class="pl-2 text-teal-600"
-          min="0"
-          max="26"
-          id="userKey"
-          value="1"
-          onchange="enDeCrypt()"
-        />
-        <p id="explain" class="text-normal text-teal-900 pt-2 pb-3 max-w-prose">
-          This will set the cipher key...the number picked moves the letter on
-          by that number of spaces in the alphabet eg. 3 would encrypt A to C.
-        </p>
-        <label for="userShift" class="text-lg text-teal-800 font-bold pt-4 pb-2 pr-2"
-          >Shift:</label
-        >
-        <input
-          type="number"
-          class="pl-2 text-teal-600"
-          min="0"
-          max="26"
-          id="userShift"
-          value="1"
-          onchange="enDeCrypt()"
-        />
-        <p id="explain" class="text-normal text-teal-900 pt-2 pb-12 max-w-prose">
-          This will shift the cipher each time a letter is encrypted...making it
-          much harder to crack!
-        </p>
-      </section>
-    </form>
+          <p
+            id="explain"
+            class="text-normal text-teal-900 pt-2 pb-12 max-w-prose"
+          >
+            This will shift the cipher each time a letter is encrypted...making
+            it much harder to crack!
+          </p>
+        </section>
+        <footer class="text-sm font-normal text-center text-teal-900">
+          &copy; Vanessa Bizzell 2025
+        </footer>
+      </form>
+    </div>
   </body>
 </html>

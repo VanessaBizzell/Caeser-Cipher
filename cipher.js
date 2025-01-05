@@ -1,6 +1,4 @@
-
 const enDeCrypt = () => {
-
   let userString = document.getElementById("userMessage").value;
   let enCrypt = document.getElementById("encrypt");
   let userKey = Number(document.getElementById("userKey").value);
@@ -20,8 +18,10 @@ const enDeCrypt = () => {
 
   if (enCrypt.checked) {
     flag = true;
+    document.getElementById("encrypted").innerHTML = "Encrypted Message:";
   } else {
     flag = false;
+    document.getElementById("encrypted").innerHTML = "Decrypted Message:";
   }
 
   //first iteration, cipher shift = 0. All other iterations add on user shift.
