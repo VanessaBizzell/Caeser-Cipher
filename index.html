@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caeser Cipher</title>
-    <script src="index.js" type="text/javascript"></script>
+    <script src="cipher.js" type="text/javascript"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <form name="caeserForm" id="ceaserForm">
         <label for="userMessage">Enter Message:</label><br />
-        <textarea id="userMessage" class="bg-red-500 border-2" rows="4" cols="50" oninput="enDeCode()">
+        <textarea id="userMessage" class="bg-red-500 border-2" rows="4" cols="50" oninput="enDeCrypt()">
         </textarea>
         <br/> <br/>
-        <label for="encode">Encode:</label>
-        <input type="radio" name="code" id="encode" checked onchange="enDeCode()" />
-        <label for="decode">Decode:</label>
-        <input type="radio" name="code" id="decode" onchange="enDeCode()" /> 
+        <label for="encrypt">Encryption:</label>
+        <input type="radio" name="code" id="encrypt" checked onchange="enDeCrypt()" />
+        <label for="decrypt">Decryption:</label>
+        <input type="radio" name="code" id="decrypt" onchange="enDeCrypt()" /> 
         <br/> <br/>
         <label for="userKey">Key:</label>
-        <input type="number" min="0" max="26" id="userKey" value="1" onchange="enDeCode()" />
+        <input type="number" min="0" max="26" id="userKey" value="1" onchange="enDeCrypt()" />
         <br/> <br/>
-        <label for="userKey">Shift:</label>
-        <input type="number" min="0" max="26" id="userKey" value="1" onchange="enDeCode()" />
+        <label for="userShift">Shift:</label>
+        <input type="number" min="0" max="26" id="userShift" value="1" onchange="enDeCrypt()" />
         <br/> <br/>
         <label for="output">Output:</label><br />
         <textarea id="output" class="bg-blue-500 border-2" rows="4" cols="50">
